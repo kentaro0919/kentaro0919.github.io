@@ -8932,11 +8932,11 @@ var _user$project$Main$update = F2(
 		var _p0 = msg;
 		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 	});
-var _user$project$Main$links = A2(
+var _user$project$Main$pagefooter = A2(
 	_elm_lang$html$Html$footer,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('p2'),
+		_0: _elm_lang$html$Html_Attributes$class('p2 bg-silver'),
 		_1: {ctor: '[]'}
 	},
 	{
@@ -8945,15 +8945,78 @@ var _user$project$Main$links = A2(
 			_elm_lang$html$Html$a,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$href('http://basscss.com/'),
+				_0: _elm_lang$html$Html_Attributes$href('mailto:kentaro0919@gmail.com'),
 				_1: {ctor: '[]'}
 			},
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html$text('for CSS'),
+				_0: _elm_lang$html$Html$text('kentaro0919@gmail.com'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {ctor: '[]'}
+	});
+var _user$project$Main$links = A2(
+	_elm_lang$html$Html$footer,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('p2 bg-white'),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$p,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('Links to make this page'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$p,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$a,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$href('http://basscss.com/'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Basscss for CSS'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$p,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$a,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$href('http://package.elm-lang.org/packages/elm-lang/html/'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('elm-lang/html'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		}
 	});
 var _user$project$Main$blogs = A2(
 	_elm_lang$html$Html$body,
@@ -8969,27 +9032,75 @@ var _user$project$Main$blogs = A2(
 			{ctor: '[]'},
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html$text(' body '),
+				_0: A2(
+					_elm_lang$html$Html$p,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$h2,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('New Year\'s Resolution for 2018'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$h3,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('2017-12-30'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('I use python for every new tool I have to code. Django is just great, but for front end looks like I need javascript. And, I do not like javascript. To be correct, I am not able to capable of comprehending javascript. At the end of 2017, I found '),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$a,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$href('http://elm-lang.org/'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('elm'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(' For 2018 I will try to lean Elm.'),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}),
 				_1: {ctor: '[]'}
 			}),
-		_1: {ctor: '[]'}
+		_1: {
+			ctor: '::',
+			_0: _user$project$Main$links,
+			_1: {ctor: '[]'}
+		}
 	});
 var _user$project$Main$nav = A2(
 	_elm_lang$html$Html$header,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('fixed top-0 left-0 right-0 p2 white bg-black'),
+		_0: _elm_lang$html$Html_Attributes$class('p2 bold white bg-blue'),
 		_1: {ctor: '[]'}
 	},
 	{
 		ctor: '::',
 		_0: A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('left p2'),
-				_1: {ctor: '[]'}
-			},
+			_elm_lang$html$Html$h1,
+			{ctor: '[]'},
 			{
 				ctor: '::',
 				_0: _elm_lang$html$Html$text('Forgetting Curve'),
@@ -9002,7 +9113,7 @@ var _user$project$Main$view = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('clearfix'),
+			_0: _elm_lang$html$Html_Attributes$class('overflow-hidden'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -9010,23 +9121,12 @@ var _user$project$Main$view = function (model) {
 			_0: _user$project$Main$nav,
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('sm-col sm-col-6 border'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _user$project$Main$blogs,
-						_1: {
-							ctor: '::',
-							_0: _user$project$Main$links,
-							_1: {ctor: '[]'}
-						}
-					}),
-				_1: {ctor: '[]'}
+				_0: _user$project$Main$blogs,
+				_1: {
+					ctor: '::',
+					_0: _user$project$Main$pagefooter,
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
