@@ -8978,7 +8978,7 @@ var _user$project$Main$nav = A2(
 	_elm_lang$html$Html$header,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('clearfix mb2 white bg-black'),
+		_0: _elm_lang$html$Html_Attributes$class('fixed top-0 left-0 right-0 p2 white bg-black'),
 		_1: {ctor: '[]'}
 	},
 	{
@@ -9002,7 +9002,7 @@ var _user$project$Main$view = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('flex'),
+			_0: _elm_lang$html$Html_Attributes$class('clearfix'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -9010,23 +9010,23 @@ var _user$project$Main$view = function (model) {
 			_0: _user$project$Main$nav,
 			_1: {
 				ctor: '::',
-				_0: _user$project$Main$blogs,
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(model),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
 						ctor: '::',
-						_0: _user$project$Main$links,
+						_0: _elm_lang$html$Html_Attributes$class('sm-col sm-col-6 border'),
 						_1: {ctor: '[]'}
-					}
-				}
+					},
+					{
+						ctor: '::',
+						_0: _user$project$Main$blogs,
+						_1: {
+							ctor: '::',
+							_0: _user$project$Main$links,
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
 			}
 		});
 };
