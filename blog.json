@@ -1,0 +1,18 @@
+[{
+    "id": "1",
+    "title": "New Year's Resolution for 2018",
+    "date": "2017-12-30",
+    "body": "I use python for every new tool I have to code. Django is just great, but for front end looks like I need javascript. And, I do not like javascript. To be correct, I am not able to capable of comprehending javascript. At the end of 2017, I found [elm](http://elm-lang.org/) For 2018 I will try to lean Elm."
+},
+{
+    "id": "2",
+    "title": "New Year's Resolution for 2018",
+    "date": "2017-12-31",
+    "body": "I use python for every new tool I have to code. Django is just great, but for front end looks like I need javascript. And, I do not like javascript. To be correct, I am not able to capable of comprehending javascript. At the end of 2017, I found elm For 2018 I will try to lean Elm."
+},
+{
+    "id": "3",
+    "title": "New Year's Resolution for 2018",
+    "date": "2018-01-01",
+    "body": "I use python for every new tool I have to code. Django is just great, but for front end looks like I need javascript. And, I do not like javascript. To be correct, I am not able to capable of comprehending javascript. At the end of 2017, I found elm For 2018 I will try to lean Elm."
+}
