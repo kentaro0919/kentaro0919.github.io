@@ -1,11 +1,13 @@
 [   {
         "id": "1",
         "url": "http://basscss.com/",
+        "linktext": "Basscss for CSS",
         "text": "Basscss for CSS"
     },
     {
         "id": "2",
         "url": "http://package.elm-lang.org/packages/elm-lang/html/",
+        "linktext": "elm-lang/html",
         "text": "elm-lang/html"
     }
 ]
