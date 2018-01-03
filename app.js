@@ -538,13 +538,11 @@ __webpack_require__(7);
 __webpack_require__(15);
 
 var Elm = __webpack_require__(16);
-var mountNode = document.getElementById('main');
+var mountNode = document.getElementById("main");
 
 // .embed() can take an optional second argument. This would be an object
 // describing the data we need to start a program, i.e. a userID or some token
-var app = Elm
-    .Main
-    .embed(mountNode);
+var app = Elm.Main.embed(mountNode);
 
 /***/ }),
 /* 4 */
@@ -6536,6 +6534,86 @@ var _elm_lang$core$Platform$Task = {ctor: 'Task'};
 var _elm_lang$core$Platform$ProcessId = {ctor: 'ProcessId'};
 var _elm_lang$core$Platform$Router = {ctor: 'Router'};
 
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode = _elm_lang$core$Json_Decode$succeed;
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$resolve = _elm_lang$core$Json_Decode$andThen(_elm_lang$core$Basics$identity);
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom = _elm_lang$core$Json_Decode$map2(
+	F2(
+		function (x, y) {
+			return y(x);
+		}));
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$hardcoded = function (_p0) {
+	return _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom(
+		_elm_lang$core$Json_Decode$succeed(_p0));
+};
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optionalDecoder = F3(
+	function (pathDecoder, valDecoder, fallback) {
+		var nullOr = function (decoder) {
+			return _elm_lang$core$Json_Decode$oneOf(
+				{
+					ctor: '::',
+					_0: decoder,
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$core$Json_Decode$null(fallback),
+						_1: {ctor: '[]'}
+					}
+				});
+		};
+		var handleResult = function (input) {
+			var _p1 = A2(_elm_lang$core$Json_Decode$decodeValue, pathDecoder, input);
+			if (_p1.ctor === 'Ok') {
+				var _p2 = A2(
+					_elm_lang$core$Json_Decode$decodeValue,
+					nullOr(valDecoder),
+					_p1._0);
+				if (_p2.ctor === 'Ok') {
+					return _elm_lang$core$Json_Decode$succeed(_p2._0);
+				} else {
+					return _elm_lang$core$Json_Decode$fail(_p2._0);
+				}
+			} else {
+				return _elm_lang$core$Json_Decode$succeed(fallback);
+			}
+		};
+		return A2(_elm_lang$core$Json_Decode$andThen, handleResult, _elm_lang$core$Json_Decode$value);
+	});
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optionalAt = F4(
+	function (path, valDecoder, fallback, decoder) {
+		return A2(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optionalDecoder,
+				A2(_elm_lang$core$Json_Decode$at, path, _elm_lang$core$Json_Decode$value),
+				valDecoder,
+				fallback),
+			decoder);
+	});
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optional = F4(
+	function (key, valDecoder, fallback, decoder) {
+		return A2(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optionalDecoder,
+				A2(_elm_lang$core$Json_Decode$field, key, _elm_lang$core$Json_Decode$value),
+				valDecoder,
+				fallback),
+			decoder);
+	});
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$requiredAt = F3(
+	function (path, valDecoder, decoder) {
+		return A2(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom,
+			A2(_elm_lang$core$Json_Decode$at, path, valDecoder),
+			decoder);
+	});
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required = F3(
+	function (key, valDecoder, decoder) {
+		return A2(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom,
+			A2(_elm_lang$core$Json_Decode$field, key, valDecoder),
+			decoder);
+	});
+
 var _elm_lang$core$Task$onError = _elm_lang$core$Native_Scheduler.onError;
 var _elm_lang$core$Task$andThen = _elm_lang$core$Native_Scheduler.andThen;
 var _elm_lang$core$Task$spawnCmd = F2(
@@ -9950,18 +10028,376 @@ var _krisajenkins$remotedata$RemoteData$update = F2(
 		}
 	});
 
-var _user$project$Models$initialModel = {players: _krisajenkins$remotedata$RemoteData$Loading};
-var _user$project$Models$Model = function (a) {
-	return {players: a};
-};
+var _user$project$Models$initialModel = {players: _krisajenkins$remotedata$RemoteData$Loading, links: _krisajenkins$remotedata$RemoteData$Loading, blogs: _krisajenkins$remotedata$RemoteData$Loading};
+var _user$project$Models$Model = F3(
+	function (a, b, c) {
+		return {players: a, links: b, blogs: c};
+	});
+var _user$project$Models$Link = F4(
+	function (a, b, c, d) {
+		return {id: a, url: b, linktext: c, text: d};
+	});
 var _user$project$Models$Player = F3(
 	function (a, b, c) {
 		return {id: a, name: b, level: c};
 	});
+var _user$project$Models$Blog = F4(
+	function (a, b, c, d) {
+		return {id: a, title: b, date: c, body: d};
+	});
 
-var _user$project$Msgs$OnFetchPlayers = function (a) {
-	return {ctor: 'OnFetchPlayers', _0: a};
+var _user$project$Msgs$OnFetchLinks = function (a) {
+	return {ctor: 'OnFetchLinks', _0: a};
 };
+var _user$project$Msgs$OnFetchBlogs = function (a) {
+	return {ctor: 'OnFetchBlogs', _0: a};
+};
+
+var _user$project$Blogs_List$blogRow = function (blog) {
+	return A2(
+		_elm_lang$html$Html$tr,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$td,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(blog.id),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$td,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(blog.title),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$td,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(blog.date),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$td,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(blog.body),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Blogs_List$list = function (blogs) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('p2'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$table,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$thead,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$tr,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$th,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Id'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$th,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('Title'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$th,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Date'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$th,
+													{ctor: '[]'},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('Body'),
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$tbody,
+							{ctor: '[]'},
+							A2(_elm_lang$core$List$map, _user$project$Blogs_List$blogRow, blogs)),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Blogs_List$nav = A2(
+	_elm_lang$html$Html$div,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('clearfix mb2 white bg-black'),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('left p2'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('Blogs'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Blogs_List$maybeList = function (response) {
+	var _p0 = response;
+	switch (_p0.ctor) {
+		case 'NotAsked':
+			return _elm_lang$html$Html$text('');
+		case 'Loading':
+			return _elm_lang$html$Html$text('Loading...');
+		case 'Success':
+			return _user$project$Blogs_List$list(_p0._0);
+		default:
+			return _elm_lang$html$Html$text(
+				_elm_lang$core$Basics$toString(_p0._0));
+	}
+};
+var _user$project$Blogs_List$view = function (response) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _user$project$Blogs_List$nav,
+			_1: {
+				ctor: '::',
+				_0: _user$project$Blogs_List$maybeList(response),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+
+var _user$project$Commands$blogDecoder = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'body',
+	_elm_lang$core$Json_Decode$string,
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'date',
+		_elm_lang$core$Json_Decode$string,
+		A3(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+			'title',
+			_elm_lang$core$Json_Decode$string,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+				'id',
+				_elm_lang$core$Json_Decode$string,
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Models$Blog)))));
+var _user$project$Commands$blogsDecoder = _elm_lang$core$Json_Decode$list(_user$project$Commands$blogDecoder);
+var _user$project$Commands$fetchBlogsUrl = 'https://kentaro0919.github.io/blog.json';
+var _user$project$Commands$fetchBlogs = A2(
+	_elm_lang$core$Platform_Cmd$map,
+	_user$project$Msgs$OnFetchBlogs,
+	_krisajenkins$remotedata$RemoteData$sendRequest(
+		A2(_elm_lang$http$Http$get, _user$project$Commands$fetchBlogsUrl, _user$project$Commands$blogsDecoder)));
+var _user$project$Commands$linkDecoder = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'linktext',
+	_elm_lang$core$Json_Decode$string,
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'text',
+		_elm_lang$core$Json_Decode$string,
+		A3(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+			'url',
+			_elm_lang$core$Json_Decode$string,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+				'id',
+				_elm_lang$core$Json_Decode$string,
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Models$Link)))));
+var _user$project$Commands$linksDecoder = _elm_lang$core$Json_Decode$list(_user$project$Commands$linkDecoder);
+var _user$project$Commands$fetchLinksUrl = 'https://kentaro0919.github.io/link.json';
+var _user$project$Commands$fetchLinks = A2(
+	_elm_lang$core$Platform_Cmd$map,
+	_user$project$Msgs$OnFetchLinks,
+	_krisajenkins$remotedata$RemoteData$sendRequest(
+		A2(_elm_lang$http$Http$get, _user$project$Commands$fetchLinksUrl, _user$project$Commands$linksDecoder)));
+
+var _user$project$Links_List$linkRow = function (link) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$a,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$href(link.url),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(link.linktext),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(
+					A2(_elm_lang$core$Basics_ops['++'], ' ', link.text)),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Links_List$list = function (links) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('p2'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$ul,
+				{ctor: '[]'},
+				A2(_elm_lang$core$List$map, _user$project$Links_List$linkRow, links)),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Links_List$nav = A2(
+	_elm_lang$html$Html$div,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('p1'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('links to make this page possible'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Links_List$maybeList = function (response) {
+	var _p0 = response;
+	switch (_p0.ctor) {
+		case 'NotAsked':
+			return _elm_lang$html$Html$text('');
+		case 'Loading':
+			return _elm_lang$html$Html$text('Loading...');
+		case 'Success':
+			return _user$project$Links_List$list(_p0._0);
+		default:
+			return _elm_lang$html$Html$text(
+				_elm_lang$core$Basics$toString(_p0._0));
+	}
+};
+var _user$project$Links_List$view = function (response) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _user$project$Links_List$nav,
+			_1: {
+				ctor: '::',
+				_0: _user$project$Links_List$maybeList(response),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+
+var _user$project$Update$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'OnFetchBlogs') {
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{blogs: _p0._0}),
+				_1: _user$project$Commands$fetchLinks
+			};
+		} else {
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{links: _p0._0}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		}
+	});
 
 var _user$project$Players_List$playerRow = function (player) {
 	return A2(
@@ -10092,20 +10528,6 @@ var _user$project$Players_List$list = function (players) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Players_List$maybeList = function (response) {
-	var _p0 = response;
-	switch (_p0.ctor) {
-		case 'NotAsked':
-			return _elm_lang$html$Html$text('');
-		case 'Loading':
-			return _elm_lang$html$Html$text('Loading...');
-		case 'Success':
-			return _user$project$Players_List$list(_p0._0);
-		default:
-			return _elm_lang$html$Html$text(
-				_elm_lang$core$Basics$toString(_p0._0));
-	}
-};
 var _user$project$Players_List$nav = A2(
 	_elm_lang$html$Html$div,
 	{
@@ -10129,6 +10551,20 @@ var _user$project$Players_List$nav = A2(
 			}),
 		_1: {ctor: '[]'}
 	});
+var _user$project$Players_List$maybeList = function (response) {
+	var _p0 = response;
+	switch (_p0.ctor) {
+		case 'NotAsked':
+			return _elm_lang$html$Html$text('');
+		case 'Loading':
+			return _elm_lang$html$Html$text('Loading...');
+		case 'Success':
+			return _user$project$Players_List$list(_p0._0);
+		default:
+			return _elm_lang$html$Html$text(
+				_elm_lang$core$Basics$toString(_p0._0));
+	}
+};
 var _user$project$Players_List$view = function (response) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -10144,8 +10580,14 @@ var _user$project$Players_List$view = function (response) {
 		});
 };
 
-var _user$project$View$page = function (model) {
+var _user$project$View$linkspage = function (model) {
+	return _user$project$Links_List$view(model.links);
+};
+var _user$project$View$playerspage = function (model) {
 	return _user$project$Players_List$view(model.players);
+};
+var _user$project$View$blogspage = function (model) {
+	return _user$project$Blogs_List$view(model.blogs);
 };
 var _user$project$View$view = function (model) {
 	return A2(
@@ -10153,15 +10595,48 @@ var _user$project$View$view = function (model) {
 		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: _user$project$View$page(model),
-			_1: {ctor: '[]'}
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('p2 bold white bg-blue'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$h1,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Forgetting Curve'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$View$blogspage(model),
+				_1: {
+					ctor: '::',
+					_0: _user$project$View$linkspage(model),
+					_1: {ctor: '[]'}
+				}
+			}
 		});
 };
 
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Models$initialModel, _1: _user$project$Commands$fetchBlogs};
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{init: _user$project$Main$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Main$subscriptions})();
+
 var Elm = {};
-Elm['View'] = Elm['View'] || {};
-if (typeof _user$project$View$main !== 'undefined') {
-    _user$project$View$main(Elm['View'], 'View', undefined);
+Elm['Main'] = Elm['Main'] || {};
+if (typeof _user$project$Main$main !== 'undefined') {
+    _user$project$Main$main(Elm['Main'], 'Main', undefined);
 }
 
 if (typeof define === "function" && define['amd'])
