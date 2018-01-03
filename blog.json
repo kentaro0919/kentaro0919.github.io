@@ -1,19 +1,32 @@
-[{
+[
+    {
+    "id": "4",
+    "title": "Day tree",
+    "date": "2018-01-03",
+    "body": "Instead making avery thing in the same forder in Playesr, this time devided for each model. This time the code works."
+},
+    {
+    "id": "4",
+    "title": "Day two",
+    "date": "2018-01-02",
+    "body": "adding second model blakes everything... start from 0 again."
+},
+{
+    "id": "3",
+    "title": "Day One",
+    "date": "2018-01-01",
+    "body": "elm-tutorial is working localy."
+},
+{
+    "id": "2",
+    "title": "elm-tutorial",
+    "date": "2017-12-31",
+    "body": "My first plan is start from [elm-tutorial](www.elm-tutorial.org). Change players to Blogs and add one more model for Link"
+},
+    {
     "id": "1",
     "title": "New Year's Resolution for 2018",
     "date": "2017-12-30",
     "body": "I use python for every new tool I have to code. Django is just great, but for front end looks like I need javascript. And, I do not like javascript. To be correct, I am not able to capable of comprehending javascript. At the end of 2017, I found [elm](http://elm-lang.org/) For 2018 I will try to lean Elm."
-},
-{
-    "id": "2",
-    "title": "New Year's Resolution for 2018",
-    "date": "2017-12-31",
-    "body": "I use python for every new tool I have to code. Django is just great, but for front end looks like I need javascript. And, I do not like javascript. To be correct, I am not able to capable of comprehending javascript. At the end of 2017, I found elm For 2018 I will try to lean Elm."
-},
-{
-    "id": "3",
-    "title": "New Year's Resolution for 2018",
-    "date": "2018-01-01",
-    "body": "I use python for every new tool I have to code. Django is just great, but for front end looks like I need javascript. And, I do not like javascript. To be correct, I am not able to capable of comprehending javascript. At the end of 2017, I found elm For 2018 I will try to lean Elm."
 }
  ]
