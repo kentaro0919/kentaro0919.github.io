@@ -10902,6 +10902,69 @@ var _user$project$Msgs$OnFetchBlogs = function (a) {
 	return {ctor: 'OnFetchBlogs', _0: a};
 };
 
+var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_evancz$url_parser$UrlParser$map, _user$project$Models$BlogsRoute, _evancz$url_parser$UrlParser$top),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_evancz$url_parser$UrlParser$map,
+				_user$project$Models$BlogRoute,
+				A2(
+					_evancz$url_parser$UrlParser_ops['</>'],
+					_evancz$url_parser$UrlParser$s('blogs'),
+					_evancz$url_parser$UrlParser$string)),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_evancz$url_parser$UrlParser$map,
+					_user$project$Models$BlogsRoute,
+					_evancz$url_parser$UrlParser$s('blogs')),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Routing$parseLocation = function (location) {
+	var _p0 = A2(_evancz$url_parser$UrlParser$parseHash, _user$project$Routing$matchers, location);
+	if (_p0.ctor === 'Just') {
+		return _p0._0;
+	} else {
+		return _user$project$Models$NotFoundRoute;
+	}
+};
+var _user$project$Routing$blogPath = function (id) {
+	return A2(_elm_lang$core$Basics_ops['++'], '#blogs/', id);
+};
+var _user$project$Routing$blogsPath = '#blogs';
+
+var _user$project$Blogs_Edit$listBtn = A2(
+	_elm_lang$html$Html$a,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('btn regular'),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$blogsPath),
+			_1: {ctor: '[]'}
+		}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$i,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('fa fa-chevron-left mr1'),
+				_1: {ctor: '[]'}
+			},
+			{ctor: '[]'}),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html$text('Back To List'),
+			_1: {ctor: '[]'}
+		}
+	});
 var _user$project$Blogs_Edit$form = function (blog) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -10970,7 +11033,11 @@ var _user$project$Blogs_Edit$nav = function (model) {
 			_0: _elm_lang$html$Html_Attributes$class('clearfix mb2 white bg-black p1'),
 			_1: {ctor: '[]'}
 		},
-		{ctor: '[]'});
+		{
+			ctor: '::',
+			_0: _user$project$Blogs_Edit$listBtn,
+			_1: {ctor: '[]'}
+		});
 };
 var _user$project$Blogs_Edit$view = function (model) {
 	return A2(
@@ -10986,42 +11053,6 @@ var _user$project$Blogs_Edit$view = function (model) {
 			}
 		});
 };
-
-var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
-	{
-		ctor: '::',
-		_0: A2(_evancz$url_parser$UrlParser$map, _user$project$Models$BlogsRoute, _evancz$url_parser$UrlParser$top),
-		_1: {
-			ctor: '::',
-			_0: A2(
-				_evancz$url_parser$UrlParser$map,
-				_user$project$Models$BlogRoute,
-				A2(
-					_evancz$url_parser$UrlParser_ops['</>'],
-					_evancz$url_parser$UrlParser$s('blogs'),
-					_evancz$url_parser$UrlParser$string)),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_evancz$url_parser$UrlParser$map,
-					_user$project$Models$BlogsRoute,
-					_evancz$url_parser$UrlParser$s('blogs')),
-				_1: {ctor: '[]'}
-			}
-		}
-	});
-var _user$project$Routing$parseLocation = function (location) {
-	var _p0 = A2(_evancz$url_parser$UrlParser$parseHash, _user$project$Routing$matchers, location);
-	if (_p0.ctor === 'Just') {
-		return _p0._0;
-	} else {
-		return _user$project$Models$NotFoundRoute;
-	}
-};
-var _user$project$Routing$blogPath = function (id) {
-	return A2(_elm_lang$core$Basics_ops['++'], '#blogs/', id);
-};
-var _user$project$Routing$blogsPath = '#blogs';
 
 var _user$project$Blogs_List$readBtn = function (blog) {
 	var path = _user$project$Routing$blogPath(blog.id);
